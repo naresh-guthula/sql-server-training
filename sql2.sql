@@ -277,7 +277,17 @@ exec sp_loadEmp1 5000000
 
 set statistics io on
 
-select * from  emp_load where eid = 123 option(maxdop 1)
+select * from  emp_load where eid = 99123 option(maxdop 1)
+
+select eid from  emp_load where eid = 99123 -- no rid lookup
+
+select * from  emp_load where eid in (1, 30, 31)
+
+select * from  emp_load where eid <= 100
+
+select eid from  emp_load --index scan not table scan
+
+--index seek, index scan, table scan
 
 --selectivity & cardinality
 
